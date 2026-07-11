@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Portfolio — Ksatria Bintang Samudra
+   Palet: Hijau tua + Aksen Emas champagne (elegan)
+   ============================================================ */
+@theme {
+  --color-brand-50: #edf6f2;
+  --color-brand-100: #d3e9df;
+  --color-brand-200: #a6d3bf;
+  --color-brand-300: #6fb597;
+  --color-brand-400: #3f9573;
+  --color-brand-500: #1f7a57;
+  --color-brand-600: #00704a;
+  --color-brand-700: #1e3932;
+  --color-brand-800: #14322a;
+  --color-brand-900: #0d2620;
+  --color-brand-950: #071813;
+
+  --color-gold-300: #ecdcb0;
+  --color-gold-400: #ddc281;
+  --color-gold-500: #c9a45c;
+  --color-gold-600: #b0873f;
+
+  --color-cream-50: #faf9f5;
+  --color-cream-100: #f4f1e9;
+
+  /* Semantic tokens (default = light) */
+  --color-app: #f2f7f3;
+  --color-surface: #ffffff;
+  --color-elevated: #ffffff;
+  --color-ink: #10241d;
+  --color-strong: #1c3a30;
+  --color-muted: #566b62;
+  --color-soft: #8aa096;
+  --color-tint: #eaf3ee;
+  --color-line: #e4ece7;
+  --color-accent: #0c6144;
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+
+  --shadow-luxe: 0 1px 2px rgba(16, 56, 42, 0.04), 0 8px 24px -6px rgba(16, 56, 42, 0.1);
+  --shadow-luxe-lg: 0 4px 12px -2px rgba(16, 56, 42, 0.08), 0 20px 40px -12px rgba(16, 56, 42, 0.18);
+}
+
+:root[data-theme="dark"] {
+  --color-app: #0a1512;
+  --color-surface: #14231d;
+  --color-elevated: #182b23;
+  --color-ink: #edf5f0;
+  --color-strong: #d7e7df;
+  --color-muted: #9db2a9;
+  --color-soft: #74897f;
+  --color-tint: #1a2c25;
+  --color-line: #253830;
+  --color-accent: #5ec79d;
+  --shadow-luxe: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+  --shadow-luxe-lg: 0 4px 12px -2px rgba(0, 0, 0, 0.4), 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-strong);
+  background-color: var(--color-app);
+  @apply antialiased;
+  font-feature-settings: "ss01";
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.font-display {
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(120deg, var(--color-gold-300), var(--color-gold-500) 55%, var(--color-gold-400));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Living background: blob mengambang (CSS-only, ringan) ── */
+.living-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.living-bg .blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  opacity: 0.5;
+  will-change: transform;
+}
+.living-bg .b1 { top: -8%; left: -6%; width: 42vw; height: 42vw; background: radial-gradient(circle, rgba(0,112,74,0.55), transparent 70%); animation: drift-a 26s ease-in-out infinite; }
+.living-bg .b2 { top: 28%; right: -10%; width: 38vw; height: 38vw; background: radial-gradient(circle, rgba(201,164,92,0.32), transparent 70%); animation: drift-b 32s ease-in-out infinite; }
+.living-bg .b3 { bottom: -14%; left: 20%; width: 46vw; height: 46vw; background: radial-gradient(circle, rgba(63,149,115,0.42), transparent 70%); animation: drift-c 38s ease-in-out infinite; }
+:root[data-theme="dark"] .living-bg .blob { opacity: 0.38; }
+:root[data-theme="dark"] .living-bg .b1 { background: radial-gradient(circle, rgba(0,140,92,0.42), transparent 70%); }
+:root[data-theme="dark"] .living-bg .b3 { background: radial-gradient(circle, rgba(31,122,87,0.4), transparent 70%); }
+@keyframes drift-a { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(6vw, 5vh) scale(1.12); } }
+@keyframes drift-b { 0%,100% { transform: translate(0,0) scale(1.05); } 50% { transform: translate(-5vw, 4vh) scale(0.92); } }
+@keyframes drift-c { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(4vw, -5vh) scale(1.1); } }
+@media (prefers-reduced-motion: reduce) {
+  .living-bg .blob { animation: none !important; }
+}
+
+.glass {
+  background: var(--glass-bg, rgba(255, 255, 255, 0.72));
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.55));
+}
+:root[data-theme="dark"] .glass {
+  --glass-bg: rgba(20, 35, 29, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(30, 57, 50, 0.22);
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+:root[data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(160, 200, 180, 0.18); background-clip: content-box; }
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-surface ring-1 ring-line;
+    box-shadow: var(--shadow-luxe);
+  }
+  .card-lg {
+    @apply rounded-3xl bg-surface ring-1 ring-line;
+    box-shadow: var(--shadow-luxe-lg);
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/40 active:scale-[0.98];
+  }
+  .btn-primary { @apply bg-brand-600 text-white shadow-sm hover:bg-brand-500; }
+  .btn-gold { @apply bg-gold-500 text-brand-900 hover:bg-gold-400; }
+  .btn-outline { @apply border border-line bg-surface/60 text-strong hover:border-brand-300 hover:bg-tint; }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface/50 px-3 py-1.5 text-sm font-medium text-strong;
+  }
+}
+
+/* ── Scroll reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 24px));
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes gradient-pan { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+.animate-gradient { background-size: 200% 200%; animation: gradient-pan 12s ease infinite; }
