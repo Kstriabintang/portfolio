@@ -8,7 +8,7 @@ const role = 'AI Engineer'
 const socials = [
   { label: 'GitHub', href: 'https://github.com/Kstriabintang', icon: 'github' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ksatria-bintang-samudra-265952313', icon: 'linkedin' },
-  { label: 'Website', href: 'https://ksatriabintangsamudra.my.id', icon: 'globe' },
+  { label: 'Website', href: 'https://ksatriabintangsamudra.com', icon: 'globe' },
 ]
 const email = 'ksatriabintangsamudra2022@gmail.com'
 
